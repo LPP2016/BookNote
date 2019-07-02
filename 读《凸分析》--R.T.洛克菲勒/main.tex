@@ -68,11 +68,13 @@ citecolor=blue]{hyperref}
 				下面证明$M$满足乘法封闭性。因为$M$是一个包含原点的仿射集，那么对于原点$\textbf{0}$和$M$中任一点$\textbf{x}$，有
 				$$(1-\lambda)\textbf{0}+\lambda \textbf{x} \in M \Leftrightarrow \lambda \textbf{x} \in M, \lambda \in \textbf{R}$$
 				即$M$满足乘法封闭性。\\
+				\\
 				下面证明$M$满足加法封闭性。设$\textbf{x}$和$\textbf{y}$是$M$中的任意两点，因为$M$是一个仿射集，所以满足
 				$$\frac{1}{2} \textbf{x} + \frac{1}{2} \textbf{y} \in M \Leftrightarrow \frac{1}{2} (\textbf{x} + \textbf{y}) \in M$$
 				又因为$M$满足乘法封闭性，所以
 				$$\textbf{x} + \textbf{y} \in M$$
 				即$M$满足加法封闭性。\\
+				\\
 				综上，$M$是$\textbf{R}^{n}$的一个子空间。
 			\end{proof}
 			\begin{definition}[仿射集的平行]
@@ -87,7 +89,9 @@ citecolor=blue]{hyperref}
 				首先证明$M$不能同时与两个不同的子空间平行。设$L_{1}$和$L_{2}$为$\textbf{R}^{n}$的两个子空间，且$L_{1}$和$L_{2}$皆平行于$M$，则$L_{1}$与$L_{2}$互相平行，那么存在$\textbf{a}$使得
 				$$L_{2}=L_{1}+\textbf{a}$$
 				因为$L_{1}$是一个子空间，所以$\textbf{0} \in L_{1}$，则$\textbf{a} \in L_{2}$。设$\textbf{x}$是$L_{1}$中任意一点，则$\textbf{x}+\textbf{a} \in L_{2}$。根据加法封闭性，得$\textbf{x} \in L_{2}$，那么$L_{1} \subseteq L_{2}$。同理可证$L_{2} \subseteq L_{1}$。因为$L_{1} \subseteq L_{2}$且$L_{2} \subseteq L_{1}$，所以$L_{1} = L_{2}$，子空间唯一性得证。\\
+				\\
 				下面证明子空间$L=M-M$。设$\textbf{x}$是$M$中任意一点，那么仿射集$M-\textbf{x}$平行于$M$且$M-\textbf{x}$包含$\textbf{0}$。那么根据定理\ref{the:theorem1}，$M-\textbf{x}$是$\textbf{R}^{n}$中的一个子空间，记作$L$，则$L=M-\textbf{x}$。因为$\textbf{x}$是$M$中的任意一点，无论选择什么样的$\textbf{x}$，都会有$L=M-\textbf{x}$，所以$L=M-M$成立。\\
+				\\
 				综上，定理\ref{the:theorem2}得证。
 			\end{proof}
 		
