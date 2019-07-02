@@ -6,4 +6,4 @@ Rockafellar, R. Tyrrell. Convex analysis. Vol. 28. Princeton university press, 1
 # 第1部分：基本概念
 ## 第1节 仿射集（2019年7月2日）
 **符号与定义**
-- \\(\textbf{R}\\)表示实数系，其中\\(\textbf{R}^{n}\\)表示由\\(n\\)元组\\(\textbf{x}=()\\)。
+- $\textbf{R}$表示实数系，其中\\(\textbf{R}^{n}\\)表示由\\(n\\)元组\\(\textbf{x}=()\\)。
