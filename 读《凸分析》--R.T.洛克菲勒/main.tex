@@ -1,0 +1,94 @@
+\documentclass[a4paper,11pt,oneside]{article}
+
+\usepackage{ctex}
+\usepackage{cite}
+\usepackage{bm}
+\usepackage{setspace}
+\usepackage{graphicx}
+%\usepackage{float}
+\usepackage{stfloats}
+\usepackage{placeins}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{url}
+\usepackage[linesnumbered,boxed,ruled,commentsnumbered]{algorithm2e}%%算法包，注意设置所需可选项
+\usepackage{amsmath}
+	\newtheorem{definition}{定义}[section]
+	\newtheorem{theorem}{定理}[section]
+	\newtheorem{proof}{证明}[section]
+\usepackage{setspace} 
+\usepackage{diagbox}
+\usepackage{multirow}
+\usepackage[colorlinks,
+linkcolor=blue,
+anchorcolor=blue,
+citecolor=blue]{hyperref}
+
+\begin{document}
+	\title{Rockafellar, R. Tyrrell. Convex analysis. Vol. 28. Princeton university press, 1970. 盛宝怀 译}
+	\author{屈彬}
+	\maketitle
+	
+	\section{基本概念}
+		\subsection{仿射集（2019年7月2日）}
+			\begin{definition}[向量空间]
+				$\textbf{R}$表示实数系，其中$\textbf{R}^{n}$表示由实$n$元组$\textbf{\textit{x}}=(\xi_{1},\xi_{2},...,\xi_{n})$所组成的向量空间。
+			\end{definition}
+			\begin{definition}[向量的内积]
+				记两向量$\textbf{\textit{x}}$与$\textbf{\textit{x}}^{*}$在实数系$\textbf{R}^{n}$中的内积为
+				$$<\textbf{\textit{x}},\textbf{\textit{x}}^{*}>=\xi_{1}\xi_{1}^{*}+\xi_{2}\xi_{2}^{*}+...+\xi_{n}\xi_{n}^{*}.$$
+			\end{definition}
+			\begin{definition}[线性变换]
+				设向量空间$\textbf{R}^{n}$到向量空间$\textbf{R}^{m}$的线性变换为$\textbf{\textit{x}} \rightarrow \textbf{\textit{A}} \textbf{\textit{x}}$，其中$\textbf{\textit{A}}$为一$m\times n$阶实矩阵，称$\textbf{\textit{A}}$为线性变换$\textbf{R}^{n} \rightarrow \textbf{R}^{m}$的\textbf{变换矩阵}。记$\textbf{\textit{A}}^{*}$为$\textbf{\textit{A}}$的转置矩阵，$\textbf{\textit{y}}^{*}$为一实$m$元组，那么它们存在以下内积关系
+				$$<\textbf{\textit{A}}\textbf{\textit{x}}, \textbf{\textit{y}}^{*}> = <\textbf{\textit{x}}, \textbf{\textit{A}}^{*} \textbf{\textit{y}}^{*}>.$$
+			\end{definition}
+			\begin{definition}[直线]
+				设$\textbf{\textit{x}}$和$\textbf{\textit{y}}$为空间$\textbf{R}^{n}$中两个不同的点，记通过$\textbf{\textit{x}}$和$\textbf{\textit{y}}$的直线为$l(\textbf{\textit{x}},\textbf{\textit{y}})$，那么$l(\textbf{\textit{x}},\textbf{\textit{y}})$上所有的点都可以表示为$\textbf{\textit{x}}$坐标和$\textbf{\textit{y}}$坐标系数和为1的线性叠加，即
+				$$l(\textbf{\textit{x}},\textbf{\textit{y}})\equiv(1-\lambda)\textbf{\textit{x}}+\lambda\textbf{\textit{y}}, \lambda \in \textbf{R}.$$
+			\end{definition}
+			\begin{definition}[仿射集]
+				令$M$为$\textbf{R}^{n}$中的一个子集，若$\forall \textbf{\textit{x}}, \textbf{\textit{y}} \in M \& \forall \lambda \in \textbf{R}$都有
+				$$(1-\lambda)\textbf{\textit{x}}+\lambda\textbf{\textit{y}} \in M$$
+				即经过子集$M$中任意两点的直线完全处于$M$内，则称$M$为$\textbf{R}^{n}$中的\textbf{仿射集}（affine set），又称作\textbf{仿射流形}（affine manifold）、\textbf{仿射变量}（affine variety）、\textbf{线形变量}（linear variety）或称$M$是\textbf{平坦的}（flat）。空集$\emptyset$和全集$\textbf{R}^{n}$一定是空间$\textbf{R}^{n}$中的仿射集。
+			\end{definition}
+			\begin{definition}[线性子空间]
+				若$M$是$\textbf{R}^{n}$的一个线性子空间（简称子空间），那么以下条件必须同时成立
+				\begin{enumerate}
+					\item $\textbf{0} \in M$。
+					\item $\forall \textbf{x} \in M \& \lambda \in \textbf{R}$满足$\lambda \textbf{x} \in M$（乘法封闭性）。
+					\item $\forall \textbf{x},\textbf{y} \in M$满足$\textbf{x}+\textbf{y} \in M$（加法封闭性）。
+				\end{enumerate}
+			\end{definition}
+			\begin{theorem}
+				\label{the:theorem1}
+				$\textbf{R}^{n}$中包含原点的仿射集是$\textbf{R}^{n}$的子空间。
+			\end{theorem}
+			\begin{proof}
+				若$M$为$\textbf{R}^{n}$的一个包含原点的仿射集，则$\textbf{0} \in M$。\\
+				下面证明$M$满足乘法封闭性。因为$M$是一个包含原点的仿射集，那么对于原点$\textbf{0}$和$M$中任一点$\textbf{x}$，有
+				$$(1-\lambda)\textbf{0}+\lambda \textbf{x} \in M \Leftrightarrow \lambda \textbf{x} \in M, \lambda \in \textbf{R}$$
+				即$M$满足乘法封闭性。\\
+				下面证明$M$满足加法封闭性。设$\textbf{x}$和$\textbf{y}$是$M$中的任意两点，因为$M$是一个仿射集，所以满足
+				$$\frac{1}{2} \textbf{x} + \frac{1}{2} \textbf{y} \in M \Leftrightarrow \frac{1}{2} (\textbf{x} + \textbf{y}) \in M$$
+				又因为$M$满足乘法封闭性，所以
+				$$\textbf{x} + \textbf{y} \in M$$
+				即$M$满足加法封闭性。\\
+				综上，$M$是$\textbf{R}^{n}$的一个子空间。
+			\end{proof}
+			\begin{definition}[仿射集的平行]
+				仿射集$M$与$L$平行是指存在$\textbf{a}$使得$M=L+\textbf{a}$。易证平行具有传递性，若仿射集$L_{1}$和$L_{2}$皆平行于$M$，那么$L_{1}$平行于$L_{2}$。
+			\end{definition}
+			\begin{theorem}
+				\label{the:theorem2}
+				$\textbf{R}^{n}$上的每个非空仿射集$M$一定平行于唯一的子空间$L$，其中$L$由下式给出。
+				$$L=M-M=\{\textbf{x}-\textbf{y}|\textbf{x},\textbf{y}\in M\}$$
+			\end{theorem}
+			\begin{proof}
+				首先证明$M$不能同时与两个不同的子空间平行。设$L_{1}$和$L_{2}$为$\textbf{R}^{n}$的两个子空间，且$L_{1}$和$L_{2}$皆平行于$M$，则$L_{1}$与$L_{2}$互相平行，那么存在$\textbf{a}$使得
+				$$L_{2}=L_{1}+\textbf{a}$$
+				因为$L_{1}$是一个子空间，所以$\textbf{0} \in L_{1}$，则$\textbf{a} \in L_{2}$。设$\textbf{x}$是$L_{1}$中任意一点，则$\textbf{x}+\textbf{a} \in L_{2}$。根据加法封闭性，得$\textbf{x} \in L_{2}$，那么$L_{1} \subseteq L_{2}$。同理可证$L_{2} \subseteq L_{1}$。因为$L_{1} \subseteq L_{2}$且$L_{2} \subseteq L_{1}$，所以$L_{1} = L_{2}$，子空间唯一性得证。\\
+				下面证明子空间$L=M-M$。设$\textbf{x}$是$M$中任意一点，那么仿射集$M-\textbf{x}$平行于$M$且$M-\textbf{x}$包含$\textbf{0}$。那么根据定理\ref{the:theorem1}，$M-\textbf{x}$是$\textbf{R}^{n}$中的一个子空间，记作$L$，则$L=M-\textbf{x}$。因为$\textbf{x}$是$M$中的任意一点，无论选择什么样的$\textbf{x}$，都会有$L=M-\textbf{x}$，所以$L=M-M$成立。\\
+				综上，定理\ref{the:theorem2}得证。
+			\end{proof}
+		
+\end{document}
