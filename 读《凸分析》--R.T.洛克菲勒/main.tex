@@ -16,6 +16,7 @@
 	\newtheorem{definition}{定义}[section]
 	\newtheorem{theorem}{定理}[section]
 	\newtheorem{proof}{证明}[section]
+	\newtheorem{inference}{推论}[section]
 \usepackage{setspace} 
 \usepackage{diagbox}
 \usepackage{multirow}
@@ -39,7 +40,7 @@ citecolor=blue]{hyperref}
 				$$<\textbf{\textit{x}},\textbf{\textit{x}}^{*}>=\xi_{1}\xi_{1}^{*}+\xi_{2}\xi_{2}^{*}+...+\xi_{n}\xi_{n}^{*}.$$
 			\end{definition}
 			\begin{definition}[线性变换]
-				设向量空间$\textbf{R}^{n}$到向量空间$\textbf{R}^{m}$的线性变换为$\textbf{\textit{x}} \rightarrow \textbf{\textit{A}} \textbf{\textit{x}}$，其中$\textbf{\textit{A}}$为一$m\times n$阶实矩阵，称$\textbf{\textit{A}}$为线性变换$\textbf{R}^{n} \rightarrow \textbf{R}^{m}$的\textbf{变换矩阵}。记$\textbf{\textit{A}}^{*}$为$\textbf{\textit{A}}$的转置矩阵，$\textbf{\textit{y}}^{*}$为一实$m$元组，那么它们存在以下内积关系
+				又称\textbf{仿射变换}。设向量空间$\textbf{R}^{n}$到向量空间$\textbf{R}^{m}$的线性变换为$\textbf{\textit{x}} \rightarrow \textbf{\textit{A}} \textbf{\textit{x}}$，其中$\textbf{\textit{A}}$为一$m\times n$阶实矩阵，称$\textbf{\textit{A}}$为线性变换$\textbf{R}^{n} \rightarrow \textbf{R}^{m}$的\textbf{变换矩阵}。记$\textbf{\textit{A}}^{*}$为$\textbf{\textit{A}}$的转置矩阵，$\textbf{\textit{y}}^{*}$为一实$m$元组，那么它们存在以下内积关系
 				$$<\textbf{\textit{A}}\textbf{\textit{x}}, \textbf{\textit{y}}^{*}> = <\textbf{\textit{x}}, \textbf{\textit{A}}^{*} \textbf{\textit{y}}^{*}>.$$
 			\end{definition}
 			\begin{definition}[直线]
@@ -94,5 +95,55 @@ citecolor=blue]{hyperref}
 				\\
 				综上，定理\ref{the:theorem2}得证。
 			\end{proof}
-		
+			\begin{definition}[仿射集的维数]
+				非空仿射集的维数等于与其平行的子空间的维数。特别地，定义空集$\emptyset$的维数为-1。维数为0、1、2的仿射集分别被称为点、线和平面。空间$\textbf{R}^{n}$中的$n-1$维仿射集被称为\textbf{超平面}（比空间少一维）。
+			\end{definition}
+			\begin{definition}[正交]
+				若向量$\textbf{x}$与向量$\textbf{y}$的内积为0，即$<\textbf{x},\textbf{y}>=0$，则称\textbf{x}与\textbf{y}正交，记作$\textbf{x} \perp \textbf{y}$。
+			\end{definition}
+			\begin{definition}[正交补（orthogonal complement）]
+				给定$\textbf{R}^{n}$的子空间$L$，若对于一切$\textbf{y} \in L$，都有$\textbf{x} \perp \textbf{y}$，这些由$\textbf{x}$构成的集合称为$L$的正交补，记作$L^{\perp}$。易证，空间$\textbf{R}^{n}$中子空间$L$的维数与其正交补$L^{\perp}$的维数之和等于空间的维数，即
+				$$dim(L)+dim(L^{\perp})=n.$$
+				另外，子空间的正交补的正交补是其本身，即
+				$$L=(L^{\perp})^{\perp}$$
+				借助正交补，可通过一维子空间刻画超平面。设$\textbf{b}$是一个非零向量,那么集合$\{\textbf{x}|\textbf{x} \perp \textbf{b}\}$表示一个$n-1$维的子空间（也表示一个经过原点的超平面），该子空间经过平移变换可表示任何与之平行的超平面，形式如下：
+				$$\{\textbf{x}|\textbf{x}+\textbf{b}\}+\textbf{a}=\{\textbf{x}+\textbf{a}<\textbf{x},\textbf{b}>\}.$$
+			\end{definition}
+			\begin{theorem}[超平面的表示]
+				\label{the:3}
+				给定$\beta \in \textbf{R}$以及非零$\textbf{b} \in \textbf{R}^{n}$，集合
+				$$H=\{\textbf{x}|<\textbf{x},\textbf{b}>=\beta\}$$
+				可表示$\textbf{R}^{n}$中的一个超平面。其中，向量$\textbf{b}$正交于超平面$H$，其余每个与$H$正交的向量为$\textbf{b}$的整倍数。
+			\end{theorem}
+			\begin{proof}
+				略。
+			\end{proof}
+			\begin{theorem}[仿射集的表示]
+				\label{the:4}
+				空间$\textbf{R}^{n}$中的仿射集可通过一个$n$元线性方程组表示。给定$\textbf{b}\in \textbf{R}^{n}$及$m\times n$阶$(m \leq n)$实矩阵$\textbf{B}$，集合
+				$$M=\{\textbf{x}\in \textbf{R}^{n}|\textbf{B}\textbf{x}=\textbf{b}\}$$
+				为$\textbf{R}^{n}$中的一个仿射集。
+			\end{theorem}
+			\begin{proof}
+				略。书中的证明不够严谨，应该仔细考虑$m>n$，即方程组为超定方程组的情形。
+			\end{proof}
+			\begin{theorem}[子空间的表示]
+				设$L$为$\textbf{R}^{n}$中的一个子空间，$\textbf{b}_{1},\textbf{b}_{2},...,\textbf{b}_{m}$为$L^{\perp}$的一组基，那么
+				$$L=(L^{\perp})^{\perp}=\{\textbf{x}|\textbf{x}\perp\textbf{b}_{1},...,\textbf{x}\perp\textbf{b}_{m}\}=\{\textbf{x}|<\textbf{x},\textbf{b}>=0,i=1,...,m\}=\{\textbf{x}|\textbf{B}\textbf{x}=0\}$$
+				其中，$\textbf{B}$为一个$m\times n$实矩阵，它的行向量为$\textbf{b}_{1},\textbf{b}_{2},...,\textbf{b}_{m}$。\\
+				\\
+				联系定理\ref{the:4}，仿射集$M$可通过子空间$L$表示，存在$\textbf{a}\in \textbf{R}^{n}$使得
+				$$M=L+\textbf{a}=\{\textbf{x}|\textbf{B}\textbf{x}=\textbf{b}\}$$
+				其中，$\textbf{b}=\textbf{B}\textbf{a}$。
+			\end{theorem}
+			\begin{inference}
+				$\textbf{R}_{n}$中的每个仿射集都是有限个超平面的交集。\\
+				\\
+				定理\ref{the:4}中仿射集的表示也可以写成
+				$$M=\{\textbf{x}|\textbf{B}\textbf{x}=\textbf{b}\}=\{\textbf{x}|<\textbf{x},\textbf{b}_{1}>=\beta_{1},<\textbf{x},\textbf{b}_{2}>=\beta_{2},...,<\textbf{x},\textbf{b}_{m}>=\beta_{m}\}$$
+				其中，$\textbf{b}_{i}$为$\textbf{B}$的第$i$个行（向量），$\beta_{i}$为$\textbf{b}$的第$i$个分量，而根据定理\ref{the:3}
+				$$H_{i}=\{\textbf{x}|<\textbf{x},\textbf{b}_{i}>=\beta_{i}\}$$
+				表示第$i$个超平面，则
+				$$M=\bigcap_{i=1}^{m}H_{i}.$$
+			\end{inference}
 \end{document}
