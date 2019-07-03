@@ -13,11 +13,11 @@
 \usepackage{url}
 \usepackage[linesnumbered,boxed,ruled,commentsnumbered]{algorithm2e}%%算法包，注意设置所需可选项
 \usepackage{amsmath}
-	\newtheorem{definition}{定义}[section]
-	\newtheorem{theorem}{定理}[section]
+\newtheorem{definition}{定义}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proof}{证明}[section]
 \usepackage{setspace} 
 \usepackage{diagbox}
-\usepackage{multirow}
 \usepackage{multirow}
 \usepackage[colorlinks,
 linkcolor=blue,
@@ -44,5 +44,38 @@ citecolor=blue]{hyperref}
 				\begin{definition}[美国能源部三大高性能计算实验室]
 					Lawrence Livermore、Los Alamos、Sandia。
 				\end{definition}
-		\subsection{并行计算系统互连（）}
+		\subsection{并行计算系统互连（2019年7月3日）}
+			\subsubsection{系统互连}
+				\begin{definition}[机群网络分类]
+					\begin{enumerate}
+						\item \textbf{系统域网络}：（System Area Network，SAN），连接短距离（3~25m）内的节点。
+						\item \textbf{局域网络}：（Local Area Network，LAN），连接企事业单位内（500m~2km）内的节点。
+						\item \textbf{节点内网络}：由\textbf{处理器总线}、\textbf{局部（本地）总线}、\textbf{存储器总线}构成。
+						\item \textbf{小型机系统接口}：（Small Computer System Interface, SCSI）由\textbf{I/O总线}、\textbf{系统总线}构成。
+					\end{enumerate}
+				\end{definition}
+				\begin{definition}[工作站机群]
+					（Cluster of Workstations, COW），通过SAN/LAN互连的工作站组。
+				\end{definition}
+			\subsubsection{静态互连网络}
+				\begin{definition}[对剖宽度]
+					（Bisection Width）：将网络划分为两等分所必须剪去的最少边数。
+				\end{definition}
+			\subsubsection{动态互连网络}
+				\begin{definition}[总线分类]
+					常用总线包括PCI、VME、Multibus、SBus、Microchannel和IEEE Futurebus。
+				\end{definition}
+				\begin{enumerate}
+					\item \textbf{本地总线}：（Local Bus），CPU板级上的总线。
+					\item \textbf{存储器总线}：存储器板级上的总线，主要指内存与CPU互连的总线。
+					\item \textbf{数据总线}：I/O与通信板级上的总线，例如硬盘与内存之间的总线，以及网卡。
+				\end{enumerate}
+			\subsubsection{标准互连网络分类}
+				\begin{enumerate}
+					\item \textbf{光纤分布式数据接口}（Fiber Distributed Data Interface, FDDI），采用双向光纤令牌环提供100~200Mb/s的数据传输。
+					\item \textbf{快速以太网}主流的互连网络，第三代以太网数据传输速度可达1Gb/s。
+					\item \textbf{myrinet}由Myricom公司生产的千兆位包开关网。
+					\item \textbf{高性能并行接口}（High Performance Parallel Interface, HiPPI），主要用于构筑异构计算机系统。
+					\item \textbf{异步传输模式}（Asynchronous Transfer Mode, ATM），在光纤通信基础上建立起来的一种新的宽带综合业务数字网（B-ISDN）的交换技术。
+				\end{enumerate}
 \end{document}
