@@ -78,4 +78,31 @@ citecolor=blue]{hyperref}
 					\item \textbf{高性能并行接口}（High Performance Parallel Interface, HiPPI），主要用于构筑异构计算机系统。
 					\item \textbf{异步传输模式}（Asynchronous Transfer Mode, ATM），在光纤通信基础上建立起来的一种新的宽带综合业务数字网（B-ISDN）的交换技术。
 				\end{enumerate}
+		\subsection{并行计算机体系结构}
+			\subsubsection{并行计算机结构模型}
+				大型并行机系统一般可分为六类机器：
+				\begin{enumerate}
+					\item \textbf{单指令多数据流}：（Single Instruction Multiple-Data, SIMD）。
+					\item \textbf{并行向量处理机}：（Parallel Vector Processor, PVP）。
+					\item \textbf{对称多处理机}：（Symmetric Multiprocessor, SMP）。
+					\item \textbf{大规模并行处理机}：（Massively Parallel Processor, MPP）。
+					\item \textbf{工作站机群}：（Cluster of Workstations, COW）。
+					\item \textbf{分布共享存储多处理机}：（Distributed Shared Memory, DSM）。
+				\end{enumerate}
+				除SIMD外，其余五种皆为MIMD。
+			\subsubsection{并行计算机访存模型}
+				\begin{enumerate}
+					\item \textbf{均匀存储访问}：（Uniform Memory Access, UMA），其特点包括：物理存储器被所有处理器均匀共享；所有处理器访问任何存储单元取相同的时间；每台处理器可带私有cache；外围设备也可以一定形式共享。这种系统由于高度共享资源又被称为\textbf{紧耦合系统}（Tightly Coupled System）。多核同构CPU系统的存储模型属于典型的UMA模型。
+					\item \textbf{非均匀存储访问}：（Nonuniform Memory Access, NUMA）。
+					\item \textbf{全高速缓存存储访问}：（Cache-Only Memory Access, COMA）。
+					\item \textbf{高速缓存一致性非均匀存储访问}：（Coherent-Cache Nonuniform Memory Access, CC-NUMA）。
+					\item \textbf{非远程存储访问}：（No-Remote Memory Access, NORMA）。
+				\end{enumerate}
+			\subsection{并行计算机存储组织}
+				\begin{definition}[层次存储技术]
+					利用程序局部性，设置多级存储系统。底层的存储器通常具有容量大、速度慢、成本低的特点，高层的存储器通常具有容量小、速度快、成本高的特点。层次存储技术出现的目的在于寻找性能与成本之间的平衡。
+				\end{definition}
+				\begin{definition}[高速缓存一致性问题]
+					当处理器将新数据写入高层存储器时，需保证其他层次中存储器的数据对应的位置具有相同的副本。
+				\end{definition}
 \end{document}
