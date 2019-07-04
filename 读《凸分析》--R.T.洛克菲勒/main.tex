@@ -40,7 +40,7 @@ citecolor=blue]{hyperref}
 				$$<\textbf{\textit{x}},\textbf{\textit{x}}^{*}>=\xi_{1}\xi_{1}^{*}+\xi_{2}\xi_{2}^{*}+...+\xi_{n}\xi_{n}^{*}.$$
 			\end{definition}
 			\begin{definition}[线性变换]
-				又称\textbf{仿射变换}。设向量空间$\textbf{R}^{n}$到向量空间$\textbf{R}^{m}$的线性变换为$\textbf{\textit{x}} \rightarrow \textbf{\textit{A}} \textbf{\textit{x}}$，其中$\textbf{\textit{A}}$为一$m\times n$阶实矩阵，称$\textbf{\textit{A}}$为线性变换$\textbf{R}^{n} \rightarrow \textbf{R}^{m}$的\textbf{变换矩阵}。记$\textbf{\textit{A}}^{*}$为$\textbf{\textit{A}}$的转置矩阵，$\textbf{\textit{y}}^{*}$为一实$m$元组，那么它们存在以下内积关系
+				设向量空间$\textbf{R}^{n}$到向量空间$\textbf{R}^{m}$的线性变换为$\textbf{\textit{x}} \rightarrow \textbf{\textit{A}} \textbf{\textit{x}}$，其中$\textbf{\textit{A}}$为一$m\times n$阶实矩阵，称$\textbf{\textit{A}}$为线性变换$\textbf{R}^{n} \rightarrow \textbf{R}^{m}$的\textbf{变换矩阵}。记$\textbf{\textit{A}}^{*}$为$\textbf{\textit{A}}$的转置矩阵，$\textbf{\textit{y}}^{*}$为一实$m$元组，那么它们存在以下内积关系
 				$$<\textbf{\textit{A}}\textbf{\textit{x}}, \textbf{\textit{y}}^{*}> = <\textbf{\textit{x}}, \textbf{\textit{A}}^{*} \textbf{\textit{y}}^{*}>.$$
 			\end{definition}
 			\begin{definition}[直线]
@@ -128,6 +128,7 @@ citecolor=blue]{hyperref}
 				略。书中的证明不够严谨，应该仔细考虑$m>n$，即方程组为超定方程组的情形。
 			\end{proof}
 			\begin{theorem}[子空间的表示]
+				\label{the:5}
 				设$L$为$\textbf{R}^{n}$中的一个子空间，$\textbf{b}_{1},\textbf{b}_{2},...,\textbf{b}_{m}$为$L^{\perp}$的一组基，那么
 				$$L=(L^{\perp})^{\perp}=\{\textbf{x}|\textbf{x}\perp\textbf{b}_{1},...,\textbf{x}\perp\textbf{b}_{m}\}=\{\textbf{x}|<\textbf{x},\textbf{b}>=0,i=1,...,m\}=\{\textbf{x}|\textbf{B}\textbf{x}=0\}$$
 				其中，$\textbf{B}$为一个$m\times n$实矩阵，它的行向量为$\textbf{b}_{1},\textbf{b}_{2},...,\textbf{b}_{m}$。\\
@@ -144,6 +145,32 @@ citecolor=blue]{hyperref}
 				其中，$\textbf{b}_{i}$为$\textbf{B}$的第$i$个行（向量），$\beta_{i}$为$\textbf{b}$的第$i$个分量，而根据定理\ref{the:3}
 				$$H_{i}=\{\textbf{x}|<\textbf{x},\textbf{b}_{i}>=\beta_{i}\}$$
 				表示第$i$个超平面，则
-				$$M=\bigcap_{i=1}^{m}H_{i}.$$
+				$$M=\bigcap_{i=1}^{m}H_{i}$$
+				因为任意一个$m$维的仿射集也是$m+1$维空间的超平面，所以仿射集与仿射集的交集依然是仿射集。
 			\end{inference}
+			\begin{definition}[仿射包]
+				给定$S \subset \textbf{R}^{n}$（$S$是一个集合），存在唯一一个包含$S$的最小的仿射集（例如，满足$S \subset M$的所有仿射集的交集）。这个仿射集被称为$S$的仿射包（afine hull），记作aff$S$。aff$S$可以由所有形式为$\lambda_{1}\textbf{x}_{1}+...+\lambda_{m}\textbf{x}_{m}$向量组成，其中$\textbf{x}_{i} \in S$且$\lambda_{1}+...+\lambda_{m}=1$。
+			\end{definition}
+			\begin{definition}[仿射无关]
+				$m+1$个向量$\textbf{b}_{0},\textbf{b}_{1},...,\textbf{b}_{m}$的集合若使得aff$\{\textbf{b}_{0},\textbf{b}_{1},...,\textbf{b}_{m}\}$的维数为$m$，则称它们是仿射无关（affinely independent）的。反之，若aff$\{\textbf{b}_{0},\textbf{b}_{1},...,\textbf{b}_{m}\}$的维数小于$m$，则称它们是仿射相关的。\\
+				\\
+				其中，以$\textbf{b}_{0}$的模作为aff$\{\textbf{b}_{0},\textbf{b}_{1},...,\textbf{b}_{m}\}$到原点的距离，那么$\textbf{b}_{0}$满足
+				$$aff\{\textbf{b}_{0},\textbf{b}_{1},...,\textbf{b}_{m}\}=L+\textbf{b}_{0}$$
+				其中
+				$$L=aff\{\textbf{0},\textbf{b}_{1}-\textbf{b}_{0},...,\textbf{b}_{m}-\textbf{b}_{0}\}$$
+				是唯一平行于aff$\{\textbf{b}_{0},\textbf{b}_{1},...,\textbf{b}_{m}\}$的子空间。$L$的维数为$m$当且仅当向量$\textbf{b}_{1}-\textbf{b}_{0},...,\textbf{b}_{m}-\textbf{b}_{0}$是线性无关的。\\
+				\\
+				结合定理\ref{the:4}和定理\ref{the:5}，若仿射集$M$中的向量$\textbf{b}_{0},\textbf{b}_{1},...,\textbf{b}_{m}$是仿射无关的，则$M$中的任一向量$\textbf{x}$具有以下表达形式
+				$$\textbf{x}=\lambda_{1}(\textbf{b}_{1}-\textbf{b}_{0})+...+\lambda_{m}(\textbf{b}_{m}-\textbf{b}_{0})+\textbf{b}_{0} = \lambda_{1}\textbf{b}_{1}+...+\lambda_{m}\textbf{b}_{m}+\textbf{b}_{0}-\sum_{i=1}^{m}\lambda_{i}\textbf{b}_{0}$$
+				即
+				$$\textbf{x}=\sum_{i=0}^{m}\lambda_{i}\textbf{b}_{i}, \lambda_{0}=-\sum_{i=1}^{m}\lambda_{i} \Leftrightarrow \sum_{i=0}^{m}\lambda_{i}=0$$
+				其中，称$\lambda_{0},\lambda_{1},...,\lambda_{m}$为$M$中的\textbf{重心坐标系统}（barycentric coordinate system）。
+			\end{definition}
+			\begin{definition}[仿射变换]
+				给定一个从$\textbf{R}^{n}$到$\textbf{R}^{m}$的变换$T:\textbf{x} \rightarrow T(\textbf{x})$，若变换前后的满足系数保持，即对于每个$\textbf{R}^{n}$中的任意两点$\textbf{x}$和$\textbf{y}$及$\lambda \in \textbf{R}$，都有
+				$$T((1-\lambda)\textbf{x}+\lambda\textbf{y})=(1-\lambda)T\textbf{x}+\lambda T\textbf{y}$$
+				则称$T$为仿射变换。\\
+				\\
+				仿射变换的形式形如$T(\textbf{x})=\textbf{A}\textbf{x}+\textbf{a}$，其中$\textbf{A}$为线性变换，$\textbf{a}\in \textbf{R}^{m}$且$\textbf{a}=T(\textbf{0})$。
+			\end{definition}
 \end{document}
