@@ -177,6 +177,7 @@ citecolor=blue]{hyperref}
 				仿射变换的形式形如$T(\textbf{x})=\textbf{A}\textbf{x}+\textbf{a}$，其中$\textbf{A}$为线性变换，$\textbf{a}\in \textbf{R}^{m}$且$\textbf{a}=T(\textbf{0})$。
 			\end{definition}
 			\begin{theorem}
+				\label{the:1.6}
 				如果一个从$\textbf{R}^{n}$到$\textbf{R}^{m}$的映射$T$为仿射变换，则对于$\textbf{R}^{n}$中的每个仿射集$M$，像集$T(M)=\{T(\textbf{x})|\textbf{x}\in M\}$也为$\textbf{R}^{m}$中的仿射集。特别地，仿射变换保持仿射包不变：
 				$$aff(T(S))=T(affS)$$
 			\end{theorem}
@@ -187,7 +188,10 @@ citecolor=blue]{hyperref}
 				$$(1-\lambda)T(\textbf{x})+\lambda T(\textbf{y})=T((1-\lambda)\textbf{x}+\lambda \textbf{y})\in T(M)$$
 				因此像集$T(M)$也为$\textbf{R}^{m}$中的仿射集。\\
 				\\
-				下面证明仿射包保持不变。设$S$是$\textbf{R}^{n}$中的一个集合，aff$S$为$S$的仿射包，根据定义\ref{def:11}，aff$S$可以由所有形式为$\lambda_{1}\textbf{x}_{1}+...+\lambda_{m}\textbf{x}_{m}$的向量组成，其中$\textbf{x}_{i}\in S$且$\sum_{i=1}^{m}\lambda_{i}=1$。那么
-				$$aff(T(S))=aff(T)$$
+				下面证明仿射包保持不变。设$S$是$\textbf{R}^{n}$中的一个集合，aff$S$为$S$的仿射包，根据定义\ref{def:11}，aff$S$可以由所有形式为$\lambda_{1}\textbf{x}_{1}+...+\lambda_{m}\textbf{x}_{m}$的向量组成，其中$\textbf{x}_{i}\in S$且$\sum_{i=1}^{m}\lambda_{i}=1$。$T(S)$的仿射包$aff(T(S))$可以表示为$\lambda_{1}T(\textbf{x}_{1})+...+\lambda_{m}T(\textbf{x}_{m})$的形式。根据定义\ref{def:13}，有
+				$$\lambda_{1}T(\textbf{x}_{1})+...+\lambda_{m}T(\textbf{x}_{m})=T(\lambda_{1}\textbf{x}_{1}+...+\lambda_{m}\textbf{x}_{m})$$
+				即
+				$$aff(T(S))=T(aff(S))$$
+				综上所述，定理\ref{the:1.6}得证
 			\end{proof}
 \end{document}
