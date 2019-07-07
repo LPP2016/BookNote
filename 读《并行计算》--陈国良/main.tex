@@ -147,4 +147,21 @@ citecolor=blue]{hyperref}
 			\subsubsection{Amdahl定律}
 			\subsubsection{Gustafson定律}
 			\subsubsection{Sun和Ni定律}
+	\section{并行算法的设计基础}
+		出于PAC比赛的需求，暂时先跳过第三章。
+		\subsection{并行算法的基础知识}
+		\subsection{并行计算模型}
+			\subsubsection{PRAM模型}
+				即\textbf{并行随机存储机器}（Parallel Random Access Machine, PRAM），是一种抽象的并行计算模型。在这种模型中，假定存在着一个容量无限大的共享存储器；有多个同构处理器；在任何时刻各处理器均可通过共享存储单元相互交换数据。根据对处理器读写时序的限制，又可分类为：
+				\begin{enumerate}
+					\item \textbf{不允许同时读和同时写}（Exclusive=Read and Exclusive-Write）的PRAM模型，记作\textbf{PRAM-EREW}。
+					\item \textbf{允许同时读不允许同时写}（Concurrent-Read and Exclusive-Write）的PRAM模型，记作\textbf{PRAM-CREW}。
+					\item \textbf{允许同时读和同时写}（Concurrent-Read and Concurrent-Write）的PRAM模型，记作\textbf{PRAM-CRCW}。
+				\end{enumerate}
+				不过，允许同时写显然是不现实的，所以对PRAM-CRCW模型做了进一步的约定：
+				\begin{enumerate}
+					\item \textbf{CPRAM-CRCW}：公共的PRAM-CRCW，只允许所有的处理器同时写相同的数。
+					\item \textbf{PPRAM-CRCW}：优先的PRAM-CRCW，只允许最优先的处理器先写。
+					\item \textbf{APRAM-CRCW}：任意的PRAM-CRCW，允许任意处理器自由写。
+				\end{enumerate}
 \end{document}
