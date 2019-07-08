@@ -150,9 +150,10 @@ citecolor=blue]{hyperref}
 	\section{并行算法的设计基础}
 		出于PAC比赛的需求，暂时先跳过第三章。
 		\subsection{并行算法的基础知识}
-		\subsection{并行计算模型}
+		\subsection{并行计算模型（2019年7月7日）}
+			并行计算模型是硬件和软件之间的一种桥梁（大雾，什么叫作``桥梁''），使用它能够设计分析算法，在其上高级语言能被有效地编译且能够用硬件实现。（我觉得作者没有把并行计算模型的用途讲清楚）
 			\subsubsection{PRAM模型}
-				即\textbf{并行随机存储机器}（Parallel Random Access Machine, PRAM），是一种抽象的并行计算模型。在这种模型中，假定存在着一个容量无限大的共享存储器；有多个同构处理器；在任何时刻各处理器均可通过共享存储单元相互交换数据。根据对处理器读写时序的限制，又可分类为：
+				即\textbf{并行随机存储机器}（Parallel Random Access Machine, PRAM），是一种抽象的并行计算同步模型。在这种模型中，假定存在着一个容量无限大的共享存储器；有多个同构处理器；在任何时刻各处理器均可通过共享存储单元相互交换数据以实现同步。根据对处理器读写时序的限制，又可分类为：
 				\begin{enumerate}
 					\item \textbf{不允许同时读和同时写}（Exclusive=Read and Exclusive-Write）的PRAM模型，记作\textbf{PRAM-EREW}。
 					\item \textbf{允许同时读不允许同时写}（Concurrent-Read and Exclusive-Write）的PRAM模型，记作\textbf{PRAM-CREW}。
@@ -164,4 +165,22 @@ citecolor=blue]{hyperref}
 					\item \textbf{PPRAM-CRCW}：优先的PRAM-CRCW，只允许最优先的处理器先写。
 					\item \textbf{APRAM-CRCW}：任意的PRAM-CRCW，允许任意处理器自由写。
 				\end{enumerate}
+			\subsubsection{异步PRAM模型}
+				记作APRAM，它的特点是\textbf{分相}（Phase），每个处理器都有其私有存储（书里称作``局存''）、私有时钟（书里称作``局部时钟''）和局部程序；处理器之间通过共享全局存储器进行通信；无全局时钟，各处理器异步地独立执行各自的指令；若处理器之间存在任何时序依赖关系（书中称作``时间依赖关系''），须通过插入同步路障（Synchronization Barrier）以保持依赖源和目标的执行顺序。
+				
+				APRAM模型具有四种访存指令：
+				\begin{enumerate}
+					\item \textbf{全局读}：将全局存储单元中的内容读入私有存储单元中。
+					\item \textbf{局部操作}：对局存中的数执行操作，其结果是存入局存中。
+					\item \textbf{全局写}：将局存单元中的内容写入全局存储单元中。
+					\item \textbf{同步}：同步是计算中的一个逻辑点，在该点各处理器均需等待别的处理器到达后才能继续执行其局部程序。
+				\end{enumerate}
+			\subsubsection{BSP模型}
+				整体同步计算模型（Bulk Synchronous Parallel），字面含义是``大''同步模型，该模型使用了三个属性描述：模块（Components）、选路器（Router）和同步路障器执行时间L（中文又称“超级步”）。BSP是一种MIMD-DM（DM：distributed memory）模型。
+				
+				在一个超级步中，每个处理器执行各自的局部计算，通过选路器接收和发送消息；然后作一全局检查（同步），以确定当前超级步是否已由所有的处理器完成；然后前进到下一个超级步。
+				
+				在分析BSP模型的性能时，假定局部操作可在一个超级步内完成。在每一超级步中，一个处理器至多发送或接收$h$条消息（称为\textbf{h-relation}）。假定$s$是传输建立时间，$g$定义为每秒处理器所能完成的局部计算数目与每秒选路器所能传输的数据量之比，那么传送$h$条消息的时间开销为$gh+s$，若$gh\geq 2s$，则超级步步长$L\geq gh$（为什么？）。硬件可设置L的下限（例如宽的通信带宽减小$g$），而软件可设置L的上限（例如并行粒度越大，L越大）。
+			\subsubsection{logP模型}
+				
 \end{document}
