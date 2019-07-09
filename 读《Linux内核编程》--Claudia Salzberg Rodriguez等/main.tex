@@ -30,7 +30,21 @@ citecolor=blue]{hyperref}
 	\maketitle
 	
 	这本书每一章背后都有习题，可根据习题的思路来阅读。
-	\section{概述}
+	\section{概述（2019年7月9日）}
 		\subsection{Unix系统和Unix的克隆系统之间有何区别？}
+			\textbf{MULTICS}（MULTiplexed Information and Computing Service）：在当时支持\textbf{多道程序设计}操作系统的基础上开发的\textbf{多用户分时}系统，让每个用户都可以访问自己的终端。$\rightarrow$UNIX系统$\rightarrow$UNIX克隆系统：Berkeley UNIX（BSD）、AT\&T UNIX System III等$\rightarrow$Minix：一个教学用小型操作系统，最新版本为 MINIX 3，适合初学者学习$\rightarrow$Linux。
+		\subsection{术语``基于Power的Linux''指什么？}
+			\textbf{基于Power的Linux}指运行在Power/PowerPC处理器上的Linux系统。
+			
+			\textbf{Power/PowerPC}全称 Performance Optimization With Enhanced RISC - Performance Computing，是一种采用精简指令集（RISC）的处理器，由AIM联盟（苹果、IBM、摩托罗拉）研发。
+		\subsection{什么是用户空间？什么是内核空间？}
+			\textbf{用户空间}是用户、程序员开发或使用应用程序所在的逻辑层面，不能直接访问硬件资源，但可以通过内核定义的系统调用来访问。
+			
+			\textbf{内核空间}是硬件管理功能发挥作用的逻辑层面，对用户不可见。
+		\subsection{用户空间的程序访问内核功能的接口是什么？}
+			\textbf{系统调用}
+		\subsection{用户UID与用户名有何联系？}
+			UID是用户的唯一标识符，内核通过UID识别和验证用户的文件访问权限。\textbf{超级用户}/\textbf{root用户}的UID维0。不同用户的UID必然不同，而用户名可以相同。
+		\subsection{列举文件与用户关联的方式}
 			
 \end{document}
