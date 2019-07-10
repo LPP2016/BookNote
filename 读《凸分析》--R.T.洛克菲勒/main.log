@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2018.4.8)  8 JUL 2019 22:35
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2018.4.8)  9 JUL 2019 16:56
 entering extended mode
 **main.tex
 (F:\硕士\程序优化组\读书笔记\BookNote\读《凸分析》--R.T.洛克
@@ -1301,13 +1301,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 188--192
 Requested font "SimSun/ICU:script=latn;language=DFLT;mapping=tex-text;" at 10.9
 5pt
  -> E:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 208.
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--212
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 213.
 [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 208.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 213.
  (F:\硕士\程序优化组\读书笔记\BookNote\读《凸分析》--R.T.洛�
 �菲勒\main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 208.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 208.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 213.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 213.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2018.4.8)  8 JUL 2019 21:27
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2018.4.8)  10 JUL 2019 14:08
 entering extended mode
 **main.tex
 (F:\硕士\程序优化组\读书笔记\BookNote\读《并行计算》--陈国�
@@ -1260,26 +1260,45 @@ EU1/lmr/m/n/10 Concurrent-Read and Concurrent-Write\xeCJK@rm/m/n/10 ）| 的 \E
 U1/lmr/m/n/10 PRAM
  []
 
-[5] [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 186.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 186.
+[5] [6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 239--255
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 257--268
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 285--301
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 326.
+[10] [11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 326.
  (F:\硕士\程序优化组\读书笔记\BookNote\读《并行计算》--陈国
 良\main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 186.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 186.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 326.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 326.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 23803 strings out of 430478
- 434318 string characters out of 3191503
- 510237 words of memory out of 3000000
- 26605 multiletter control sequences out of 15000+200000
+ 23807 strings out of 430478
+ 434383 string characters out of 3191503
+ 511293 words of memory out of 3000000
+ 26609 multiletter control sequences out of 15000+200000
  13281 words of font info for 78 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  57i,11n,45p,833b,495s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.pdf (7 pages).
+Output written on main.pdf (11 pages).
