@@ -215,7 +215,7 @@ citecolor=blue]{hyperref}
 					实现子问题之间相互作用方式有两种
 					\begin{enumerate}
 						\item \textbf{数据流方式}：（Dataflow）根据子问题数据的相关性来组织并行，按\textbf{数据驱动}（Data-Driven）的方式决定并行执行的先后次序。
-						\textbf{客户/服务器方式}：就是常见的C/S方式。
+						\item \textbf{客户/服务器方式}：就是常见的C/S方式。
 					\end{enumerate}
 			\subsection{MPI并行编程（2019年7月10日）}
 				（Message Passing Interface）。MPI进程是\textbf{重量级}、\textbf{单线程}的进程。
@@ -321,6 +321,24 @@ citecolor=blue]{hyperref}
 							\hline
 						\end{tabular}
 					\end{table}
-				\subsection{群体通信}
+				\subsubsection{一个基于MPICH实现多节点并行的例子}
+					本节使用的例子详见``MPI\_demo/mat\_inc''目录。该程序的主要功能是给一片连续的内存中不同的位置赋不同的值。
+					
+					我有两台刀片服务器node02(内网地址192.168.1.101)、node03(内网地址192.168.1.103)，采用粗粒度的域分解方式实现任务划分，两台机器分别处理内存的前半段和后半段。两台机器的MPI软件版本必须相同，我用的是MPICH3。基本的MPICH软件包只包含mpirun、mpiexec，用于执行MPI程序；编译采用MPI程序还需要安装MPICH-devel开发者软件包，包含mpicc编译器。两台刀片服务器的操作系统皆为CentOS（具体版本未知），互连方式为infiniteband。
+					
+					以下是步骤：
+					\begin{enumerate}
+						\item 首先确保node02与node03之间可以免密ssh登录。使用``ssh-keygen -t [rsa] [target host]''命令生成ssh-key，储存在id\_rsa、id\_rsa.pub文件中。
+						\item 将用mpicc编译器编译好的程序分别拷贝到两个节点的同一相对目录下（mpirun命令会携带主节点的环境参数到从节点），注意代码中需要有根据进程号进行域分解的代码。
+						\item 在主节点（我以node02为主节点）中通过``mpirun -np [主节点进程数] [可执行文件] : -host [从节点地址] -np [从节点进程数] [可执行文件]''执行程序。也可以通过machinelist添加更多的节点。
+					\end{enumerate}
+					
+					以下是通过执行命令``mpirun -np 1 ./mat\_inc\_mpi.out : -host 192.168.1.103 -np 1 ./mat\_inc\_mpi.out''产的生输出结果，该结果与对应串行程序的输出相同，验证了并行程序的正确性。
+					\begin{figure}[H]
+						\centering
+						\includegraphics[width=1\linewidth]{image/mat_inc_mpi.png}
+					\end{figure}
+					
+				\subsubsection{群体通信}
 				
 \end{document}

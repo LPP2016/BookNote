@@ -42,4 +42,5 @@
 \BOOKMARK [3][-]{subsubsection.14.1.2}{MPMD并行程序}{subsection.14.1}% 42
 \BOOKMARK [2][-]{subsection.14.2}{MPI并行编程（2019年7月10日）}{section.14}% 43
 \BOOKMARK [3][-]{subsubsection.14.2.1}{最基本的MPI}{subsection.14.2}% 44
-\BOOKMARK [2][-]{subsection.14.3}{群体通信}{section.14}% 45
+\BOOKMARK [3][-]{subsubsection.14.2.2}{一个基于MPICH实现多节点并行的例子}{subsection.14.2}% 45
+\BOOKMARK [3][-]{subsubsection.14.2.3}{群体通信}{subsection.14.2}% 46
