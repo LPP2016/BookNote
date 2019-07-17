@@ -261,12 +261,20 @@ citecolor=blue]{hyperref}
 					$$\textbf{r}_{(i+1)}=\textbf{b}-\textbf{A}\textbf{x}_{(i+1)}$$
 					$$\textbf{r}_{(i)}=\textbf{b}-\textbf{A}\textbf{x}_{(i)}$$
 					$$\textbf{x}_{(i+1)}=\textbf{x}_{(i)}+\textbf{a}_{(i)}\textbf{r}_{(i)}$$
-					哎呀不管了，目前没找到有靠谱证明过程的资料，直接上共轭梯度法的公式吧
+					哎呀不管了，目前没找到有靠谱证明过程的资料，但是又急着用，直接上共轭梯度法的公式吧
 					$$\textbf{d}_{(0)}=\textbf{r}_{(0)}=\textbf{b}-\textbf{A}\textbf{x}_{0}$$
 					$$\textbf{a}_{(i)}=-\frac{\textbf{d}^{T}_{(i)}\textbf{r}_{(i)}}{\textbf{d}^{T}_{(i)}\textbf{A}\textbf{d}_{(i)}}$$
 					$$\textbf{x}_{(i+1)}=\textbf{x}_{(i)}+\textbf{a}_{(i)}\textbf{d}_{(i)}$$
 					$$\textbf{r}_{(i+1)}=\textbf{r}_{(i)}-\textbf{a}_{(i)}\textbf{A}\textbf{d}_{(i)}$$
 					$$\textbf{d}_{i+1}=\textbf{r}_{(i+1)}+\frac{\textbf{r}^{T}_{(i+1)}\textbf{r}_{(i+1)}}{\textbf{r}^{T}_{(i)}\textbf{r}_{(i)}}\textbf{d}_{(i)}$$
+					
+					\textbf{预处理共轭梯度法（PCG）}
+					
+					使用迭代法解线性方程组$\textbf{A}\textbf{x}=\textbf{b}$存在一个问题，那就是矩阵的条件数越大，收敛越慢。通过预处理将原始方程组转换为条件数较小的访存，可以加快收敛速度。PAC2019题目中就给出了PCG算法的伪代码。理论方面，知乎文章\url{https://zhuanlan.zhihu.com/p/33820289}有较为详细的说明。
+					
+					\textbf{避免通信的预处理共轭梯度法（Communication Avoiding PCG，CAPCG）}
+					
+					这个方法主要应用于并行计算中，为避免不同计算域之间的通信，在PCG的基础上采用ghost cell来缓存计算域边界的计算结果。
 		\section{快速傅里叶变换}
 		\section{并行程序设计基础}
 		\section{共享存储系统并行编程}
