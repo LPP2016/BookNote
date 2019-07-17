@@ -190,11 +190,83 @@ citecolor=blue]{hyperref}
 					\item P（Processor）表示处理器/存储器模块数。
 				\end{enumerate}
 		\section{并行算法的一般设计策略}
+			\subsection{串行算法的直接并行化}
+			
 		\section{并行算法的基本设计技术}
+			\subsection{划分设计技术}
+				\subsubsection{均匀划分技术}
+				\subsubsection{方根划分技术}
+				
 		\section{并行算法的一般设计过程}
 		\section{基本通信操作}
 		\section{稠密矩阵运算}
 		\section{线性方程组的求解}
+			\subsection{稀疏线性方程组求解}
+				\subsubsection{共轭梯度法}
+					（Conjugate Gradient），也叫\textbf{共轭斜量法}。其基本思想共轭梯度法用于求解类似于$\textbf{A}\textbf{x}=\textbf{b}$这样的一次方程组。通过对二次型函数
+					$$f(\textbf{x})=\frac{1}{2}\textbf{x}^{T}\textbf{A}\textbf{x}-\textbf{b}^{T}\textbf{x}+c$$
+					的变元$\textbf{x}$求导，得
+					$$f^{'}(\textbf{x})=\textbf{A}\textbf{x}-\textbf{b}$$
+					因此解方程组$\textbf{A}\textbf{x}=\textbf{b}$等价于求出当$f^{'}(\textbf{x})=\textbf{A}\textbf{x}-\textbf{b}=0$时对应的$\textbf{x}$（若$\textbf{A}$为实二次型，则$f^{'}(\textbf{x})=0$意味着$f(\textbf{x})$取得最小值）。
+					
+					要想充分理解共轭梯度法，我们首先要了解之前的用于求解大规模线性方程组的同类方法。
+					
+					\textbf{最速下降法（梯度下降法）}
+					
+					从任意一点$\textbf{x}_{(0)}$出发，每次都朝梯度方向（下降速度最快的方向）下降，从而得到解序列$\textbf{x}_{(1)}, \textbf{x}_{(2)},...$，直到两次下降的误差小于给定的误差上限。记第$i$次迭代的误差为$\textbf{e}_{(i)}=\textbf{x}_{(i)}-\textbf{x}_{(i-1)}$，残差为$\textbf{r}_{(i)}=\textbf{b}-\textbf{A}\textbf{x}_{(i)}$，其中$\textbf{x}$表示方程组$\textbf{A}\textbf{x}=\textbf{b}$的解。于是
+					$$\textbf{r}_{(i)}=-f^{'}(\textbf{x}_{i})$$
+					$$\textbf{x}_{(i+1)}=\textbf{x}_{(i)}+\textbf{a}_{(i)}\textbf{r}_{(i)}$$
+					其中$\textbf{a}_{(i)}$为第$i$步沿着残差的方向$\textbf{r}_{(i)}$的步长。步长$\textbf{a}_{(i)}$选取的基本原则是尽量让下一次迭代中$f(\textbf{x}_{i+1})$的值更小，这样才能更快地到达$f(\textbf{x})$的全局最小值。把$f(\textbf{x}_{(i+1)})$看作是$\textbf{a}_{(i)}$的函数，要使得$f(\textbf{x})$最小，也就是求
+					$$\frac{df(\textbf{x}_{(i+1)})}{d\textbf{a}_{(i)}}=0$$
+					时的$\textbf{a}_{(i)}$值。根据链式法则，有
+					$$\frac{df(\textbf{x}_{(i+1)})}{\textbf{a}_{(i)}}=\frac{df(\textbf{x}_{(i+1)})}{d\textbf{x}_{(i+1)}}\frac{d\textbf{x}_{(i+1)}}{d\textbf{a}_{(i)}}=f^{'}(\textbf{x}_{(i+1)})^{T}\frac{d\textbf{x}_{(i+1)}}{d\textbf{a}_{(i)}}=-\textbf{r}_{(i+1)}^{T}\textbf{r}_{(i)}$$
+					当$\textbf{r}_{(i)}$与$\textbf{r}_{(i+1)}$正交时，$\textbf{r}_{(i+1)}^{T}\textbf{r}_{(i)}=0$，那么可以求出迭代步$\textbf{a}_{(i)}$
+					$$\textbf{r}_{(i+1)}^{T}\textbf{r}_{(i)}=0$$
+					$$(\textbf{b}-\textbf{A}\textbf{x}_{(i+1)})^{T}\textbf{r}_{(i)}=0$$
+					$$(\textbf{b}-\textbf{A}(\textbf{x}_{(i)}+\textbf{a}_{(i)}\textbf{r}_{(i)}))^{T}\textbf{r}_{(i)}=0$$
+					$$(\textbf{b}-\textbf{A}\textbf{x}_{(i)})^{T}\textbf{r}_{(i)}-\textbf{a}_{(i)}(\textbf{A}\textbf{r}_{(i)})^{T}\textbf{r}_{(i)}=0$$
+					$$(\textbf{b}-\textbf{A}\textbf{x}_{(i)})^{T}=\textbf{a}_{(i)}(\textbf{A}\textbf{r}_{(i)})$$
+					$$\textbf{a}_{(i)}=\frac{\textbf{r}^{T}_{(i)}\textbf{r}_{(i)}}{\textbf{r}^{T}_{(i)}\textbf{A}\textbf{r}_{(i)}}$$
+					综合，最速下降法就是
+					$$\textbf{r}_{(i)}=\textbf{b}-\textbf{A}\textbf{x}_{(i)}$$
+					$$\textbf{a}_{(i)}=\frac{\textbf{r}^{T}_{(i)}\textbf{r}_{(i)}}{\textbf{r}^{T}_{(i)}\textbf{A}\textbf{r}_{(i)}}$$
+					$$\textbf{x}_{(i+1)}=\textbf{x}_{(i)}+\textbf{a}_{(i)}\textbf{r}_{(i)}$$
+					为了减小复杂度，也可以采用以下方法求$\textbf{r}_{(i+1)}$
+					$$\textbf{b}-\textbf{A}\textbf{x}_{(i+1)}=\textbf{b}-\textbf{A}(\textbf{x}_{(i)}+\textbf{a}_{(i)}\textbf{r}_{(i)})$$
+					$$\textbf{r}_{(i+1)}=\textbf{r}_{(i)}-\textbf{A}\textbf{a}_{(i)}\textbf{r}_{(i)}$$
+					梯度下降法在迭代过程中迭代方向都与上一次迭代方向正交。
+					
+					\textbf{雅各比迭代法}
+					
+					学高数时似乎接触过。雅各比迭代要求线性方程组$\textbf{A}\textbf{x}=\textbf{b}$中的矩阵$\textbf{A}$为非奇异矩阵，对于一般矩阵$\textbf{A}$，我们可以把$\textbf{A}$拆分为矩阵$\textbf{D}$和$\textbf{E}$（$\textbf{A}=\textbf{D}+\textbf{E}$），其中$\textbf{D}$是对角阵（可逆），$\textbf{E}$是剩下的部分，那么
+					$$\textbf{A}\textbf{x}=\textbf{b}$$
+					$$(\textbf{D}+\textbf{E})\textbf{x}=\textbf{b}$$
+					$$\textbf{D}\textbf{x}=\textbf{b}-\textbf{E}\textbf{x}$$
+					$$\textbf{x}=\textbf{D}^{-1}(\textbf{b}-\textbf{E}\textbf{x})$$
+					为看得舒服，将$\textbf{x}=\textbf{D}^{-1}(\textbf{b}-\textbf{E}\textbf{x})$写作
+					$$\textbf{x}_{(i+1)}=\textbf{B}\textbf{x}_{(i)}+\textbf{z}$$
+					这就是雅各比迭代的迭代格式。其中$\textbf{B}=-\textbf{D}^{-1}\textbf{E}$，$\textbf{z}=\textbf{D}^{-1}\textbf{b}$。关于迭代格式的构造，知乎的答案\url{https://zhuanlan.zhihu.com/p/30965284}讲得很细。如果矩阵$\textbf{B}$的谱半径（最大特征值）小于1，那么迭代是可以收敛的，反之则不能收敛。
+					
+					梯度下降法与雅各比迭代法公共的主要缺陷是：为了收敛到解附近，迭代方向可能变了很多次，造成迭代次数增多，从而增加计算复杂度。
+					
+					\textbf{共轭梯度法}
+					
+					如果能够选取一系列线性无关的方向向量$\textbf{d}_{(0)},\textbf{d}_{(1)},\textbf{(d)}_{(2)},...,\textbf{d}_{(n-1)}$，沿着每个方向只迭代一次，最后就能到达解$\textbf{x}$处，迭代的次数最多为$n$次，可以解决梯度下降法和雅各比迭代法的问题。
+					
+					\textbf{共轭} 给定一个正定矩阵$\textbf{A}$，如果两个向量$\textbf{u}$和$\textbf{v}$满足$\textbf{u}^{T}\textbf{A}\textbf{v}=0$，则称$\textbf{u}$和$\textbf{v}$是关于矩阵$\textbf{A}$共轭的。
+					
+					现在我们来找一组关于线性方程组$\textbf{A}\textbf{x}=\textbf{b}$中矩阵$\textbf{A}$两两共轭的基向量$\textbf{d}$。问题在于如何寻找这样的$\textbf{d}$。
+					
+					我们先看一下残差向量$\textbf{r}$。对于第$i+1$次迭代中的残差$\textbf{r}_{(i+1)}$，根据最速下降法中的公式，有
+					$$\textbf{r}_{(i+1)}=\textbf{b}-\textbf{A}\textbf{x}_{(i+1)}$$
+					$$\textbf{r}_{(i)}=\textbf{b}-\textbf{A}\textbf{x}_{(i)}$$
+					$$\textbf{x}_{(i+1)}=\textbf{x}_{(i)}+\textbf{a}_{(i)}\textbf{r}_{(i)}$$
+					哎呀不管了，目前没找到有靠谱证明过程的资料，直接上共轭梯度法的公式吧
+					$$\textbf{d}_{(0)}=\textbf{r}_{(0)}=\textbf{b}-\textbf{A}\textbf{x}_{0}$$
+					$$\textbf{a}_{(i)}=-\frac{\textbf{d}^{T}_{(i)}\textbf{r}_{(i)}}{\textbf{d}^{T}_{(i)}\textbf{A}\textbf{d}_{(i)}}$$
+					$$\textbf{x}_{(i+1)}=\textbf{x}_{(i)}+\textbf{a}_{(i)}\textbf{d}_{(i)}$$
+					$$\textbf{r}_{(i+1)}=\textbf{r}_{(i)}-\textbf{a}_{(i)}\textbf{A}\textbf{d}_{(i)}$$
+					$$\textbf{d}_{i+1}=\textbf{r}_{(i+1)}+\frac{\textbf{r}^{T}_{(i+1)}\textbf{r}_{(i+1)}}{\textbf{r}^{T}_{(i)}\textbf{r}_{(i)}}\textbf{d}_{(i)}$$
 		\section{快速傅里叶变换}
 		\section{并行程序设计基础}
 		\section{共享存储系统并行编程}
@@ -338,7 +410,6 @@ citecolor=blue]{hyperref}
 						\centering
 						\includegraphics[width=1\linewidth]{image/mat_inc_mpi.png}
 					\end{figure}
-					
 				\subsubsection{群体通信}
 				
 \end{document}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2018.4.8)  12 JUL 2019 10:45
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2018.4.8)  17 JUL 2019 17:32
 entering extended mode
 **main.tex
 (F:\硕士\程序优化组\读书笔记\BookNote\读《并行计算》--陈国�
@@ -1260,54 +1260,66 @@ EU1/lmr/m/n/10 Concurrent-Read and Concurrent-Write\xeCJK@rm/m/n/10 ）| 的 \E
 U1/lmr/m/n/10 PRAM
  []
 
-[5] [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 239--255
+[5] [6]
+Requested font "[lmroman7-bold]:mapping=tex-text" at 7.0pt
+ -> E:/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman7-bold.otf
+Requested font "[lmroman5-bold]:mapping=tex-text" at 5.0pt
+ -> E:/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman5-bold.otf
+ [7] [8] [9]
+LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 248
+.
+ (E:\CTEX\MiKTeX\tex\latex\euenc\eu1lmtt.fd
+File: eu1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Requested font "[lmmono10-regular]" at 10.0pt
+ -> E:/CTEX/MiKTeX/fonts/opentype/public/lm/lmmono10-regular.otf
+ [10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 311--327
 
  []
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 257--268
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 329--340
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--284
+Underfull \hbox (badness 10000) in paragraph at lines 341--356
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--301
+Underfull \hbox (badness 10000) in paragraph at lines 357--373
 
  []
 
-[10]
+[13] [14]
 File: image/mat_inc_mpi.png Graphic file (type QTm)
  <use  "image/mat_inc_mpi.png" >
-Overfull \hbox (7.60503pt too wide) in paragraph at lines 336--340
+Overfull \hbox (7.60503pt too wide) in paragraph at lines 408--412
 []\xeCJK@rm/m/n/10 以 下 是 通 过 执 行 命 令 \EU1/lmr/m/n/10 “mpiru
 n -np 1 ./mat_inc_mpi.out : -host 192.168.1.103
  []
 
-[11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 344.
- [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 344.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 415.
+[15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 415.
  (F:\硕士\程序优化组\读书笔记\BookNote\读《并行计算》--陈国
 良\main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 344.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 344.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 415.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 415.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 23813 strings out of 430478
- 434442 string characters out of 3191503
- 511447 words of memory out of 3000000
- 26611 multiletter control sequences out of 15000+200000
- 13281 words of font info for 78 fonts, out of 3000000 for 9000
+ 23865 strings out of 430478
+ 435480 string characters out of 3191503
+ 511887 words of memory out of 3000000
+ 26654 multiletter control sequences out of 15000+200000
+ 13305 words of font info for 81 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  57i,11n,45p,833b,495s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.pdf (12 pages).
+Output written on main.pdf (15 pages).
